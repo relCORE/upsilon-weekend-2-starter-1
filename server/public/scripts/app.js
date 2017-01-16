@@ -1,6 +1,7 @@
 var navCounter = 0;
 var navMax = 0;
 var dataArr;
+var timer;
 
 $(document).ready(function(){
 
@@ -26,13 +27,41 @@ $(document).ready(function(){
 
         });
 
+        timer = setInterval(next, 10000);
+
       }
     });
 
 
 
   //Button Listenders
-  $('#navBar').on('click', '#prev', function(){
+  $('#navBar').on('click', '#prev', prev);
+
+  $('#navBar').on('click', '#next', next);
+
+
+
+
+});
+
+
+function next () {
+  clearInterval(timer);
+  timer = setInterval(next, 10000);
+  $('#' + navCounter).toggleClass("selected");
+  navCounter++;
+  if (navCounter > navMax){
+    navCounter = 0;
+  }
+  console.log(navCounter);
+  changeStudent(dataArr[navCounter]);
+  $('#' + navCounter).toggleClass("selected");
+
+}
+
+function prev () {
+  clearInterval(timer);
+  timer = setInterval(next, 10000);
     $('#' + navCounter).toggleClass("selected");
     navCounter--;
     if (navCounter < 0){
@@ -41,26 +70,7 @@ $(document).ready(function(){
     console.log(navCounter);
     changeStudent(dataArr[navCounter]);
     $('#' + navCounter).toggleClass("selected");
-
-  });
-
-  $('#navBar').on('click', '#next', function(){
-    $('#' + navCounter).toggleClass("selected");
-    navCounter++;
-    if (navCounter > navMax){
-      navCounter = 0;
-    }
-    console.log(navCounter);
-    changeStudent(dataArr[navCounter]);
-    $('#' + navCounter).toggleClass("selected");
-
-  });
-
-
-
-
-});
-
+}
 
 function changeStudent (student){
 
