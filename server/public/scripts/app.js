@@ -17,10 +17,10 @@ $(document).ready(function(){
         var $studentBox;
         dataArr.forEach(function(student){
           if(idCounter == 0){
-            $studentBox = '<div class = "box selected" id=' + idCounter + '></div>';
+            $studentBox = '<div class = "box selected" id=' + idCounter + '>' + (idCounter+1) + '</div>';
             changeStudent(student);
           } else{
-            $studentBox = '<div class = "box" id=' + idCounter + '></div>';
+            $studentBox = '<div class = "box" id=' + idCounter + '>' + (idCounter+1) + '</div>';
           }
           idCounter++;
           $('#students').append($studentBox);
@@ -38,6 +38,8 @@ $(document).ready(function(){
   $('#navBar').on('click', '#prev', prev);
 
   $('#navBar').on('click', '#next', next);
+
+  $('#students').on('click', ".box", changeById);
 
 
 
@@ -72,11 +74,21 @@ function prev () {
     $('#' + navCounter).toggleClass("selected");
 }
 
+
+function changeById () {
+  $('#' + navCounter).toggleClass("selected");
+  navCounter = Number(this.id);
+  $('#' + navCounter).toggleClass("selected");
+  changeStudent(dataArr[navCounter]);
+
+}
+
+
 function changeStudent (student){
 
 
   $("#realName").fadeOut(function() {$(this).text(student.name)}).fadeIn(1000);
-  $("#gitName").fadeOut(function() {$(this).text(student.githubUserName)}).fadeIn(1000);
+  $("#gitName").fadeOut(function() {$(this).text("https://github.com/" + student.githubUserName)}).fadeIn(1000);
   $("#shoutOut").fadeOut(function() {$(this).text(student.shoutout)}).fadeIn(1000);
 
   // $('#realName').fadeOut(1000);

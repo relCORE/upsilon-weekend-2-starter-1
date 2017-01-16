@@ -13,10 +13,18 @@ h1 {
 
 .selected {
   background-color: black;
+  color: white;
 }
 
 #navBar {
   width: 100%;
   text-align: center;
 
+}
+
+#bio {
+  text-align: center;
+}
+#realName {
+  font-size: 2em;
 }
