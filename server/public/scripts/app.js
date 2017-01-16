@@ -1,5 +1,6 @@
 var navCounter = 0;
 var navMax = 0;
+var dataArr;
 
 $(document).ready(function(){
 
@@ -9,13 +10,14 @@ $(document).ready(function(){
       url: "/data",
       success: function(data){
         console.log(data);
-        var dataArr = data;
+        dataArr = data;
         navMax = data.length - 1;
         var idCounter = 0;
         var $studentBox;
         dataArr.forEach(function(student){
           if(idCounter == 0){
             $studentBox = '<div class = "box selected" id=' + idCounter + '></div>';
+            changeStudent(student);
           } else{
             $studentBox = '<div class = "box" id=' + idCounter + '></div>';
           }
@@ -37,6 +39,7 @@ $(document).ready(function(){
       navCounter = navMax;
     }
     console.log(navCounter);
+    changeStudent(dataArr[navCounter]);
     $('#' + navCounter).toggleClass("selected");
 
   });
@@ -48,6 +51,7 @@ $(document).ready(function(){
       navCounter = 0;
     }
     console.log(navCounter);
+    changeStudent(dataArr[navCounter]);
     $('#' + navCounter).toggleClass("selected");
 
   });
@@ -56,3 +60,12 @@ $(document).ready(function(){
 
 
 });
+
+
+function changeStudent (student){
+  $('#realName').text(student.name);
+  $('#gitName').text(student.githubUserName);
+  $('#shoutOut').text(student.shoutout);
+
+
+}
