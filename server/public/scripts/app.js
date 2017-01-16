@@ -41,6 +41,8 @@ $(document).ready(function(){
 
   $('#students').on('click', ".box", changeById);
 
+  $('#gitName').on('click', goToGit);
+
 
 
 
@@ -76,6 +78,8 @@ function prev () {
 
 
 function changeById () {
+  clearInterval(timer);
+  timer = setInterval(next, 10000);
   $('#' + navCounter).toggleClass("selected");
   navCounter = Number(this.id);
   $('#' + navCounter).toggleClass("selected");
@@ -83,6 +87,9 @@ function changeById () {
 
 }
 
+function goToGit () {
+  window.open("https://github.com/" + dataArr[navCounter].githubUserName);
+}
 
 function changeStudent (student){
 
