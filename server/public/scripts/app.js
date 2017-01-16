@@ -63,9 +63,23 @@ $(document).ready(function(){
 
 
 function changeStudent (student){
-  $('#realName').text(student.name);
-  $('#gitName').text(student.githubUserName);
-  $('#shoutOut').text(student.shoutout);
+
+
+  $("#realName").fadeOut(function() {$(this).text(student.name)}).fadeIn(1000);
+  $("#gitName").fadeOut(function() {$(this).text(student.githubUserName)}).fadeIn(1000);
+  $("#shoutOut").fadeOut(function() {$(this).text(student.shoutout)}).fadeIn(1000);
+
+  // $('#realName').fadeOut(1000);
+  // $('#gitName').fadeOut(1000);
+  // $('#shoutOut').fadeOut(1000);
+  //
+  // $('#realName').text(student.name);
+  // $('#gitName').text(student.githubUserName);
+  // $('#shoutOut').text(student.shoutout);
+  //
+  // $('#realName').fadeIn(1000);
+  // $('#gitName').fadeIn(1000);
+  // $('#shoutOut').fadeIn(1000);
 
 
 }
