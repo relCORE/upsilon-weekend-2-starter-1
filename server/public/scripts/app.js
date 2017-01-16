@@ -95,6 +95,7 @@ function changeStudent (student){
 
 
   $("#realName").fadeOut(function() {$(this).text(student.name)}).fadeIn(1000);
+  $("#gitImg").fadeOut(function() { $(this).attr('src', "https://github.com/" + student.githubUserName + ".png" )}).fadeIn(1000);
   $("#gitName").fadeOut(function() {$(this).text("https://github.com/" + student.githubUserName)}).fadeIn(1000);
   $("#shoutOut").fadeOut(function() {$(this).text(student.shoutout)}).fadeIn(1000);
 
